@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "telegram-bot"
+version = "0.1.0"
+description = ""
+authors = ["muhammad ziada <engziada@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+telethon = "^1.35.0"
+python-telegram-bot = "^21.2"
+pillow = "^10.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
