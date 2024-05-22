@@ -6,12 +6,16 @@ from PIL import Image
 from telethon.errors.rpcerrorlist import FloodWaitError
 from time import sleep
 
-# Telegram API credentials
-API_ID = "25694720"
-API_HASH = "cb67c5b90764932873529b6f95162665"
-# Channel to monitor and your channel to send images to
-MONITORED_CHANNEL = "@vipstainlesssteel"#vipstainlesssteel
-YOUR_CHANNEL = "@MZiadaCh"
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
+
+API_ID = os.getenv("API_ID")
+API_HASH = os.getenv("API_HASH")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+PHONE_NUMBER = os.getenv("PHONE_NUMBER")
+MONITORED_CHANNEL = os.getenv("MONITORED_CHANNEL")
+YOUR_CHANNEL = os.getenv("YOUR_CHANNEL")
 
 # Logging for debugging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -29,13 +33,10 @@ client = TelegramClient("your_session_name", API_ID, API_HASH)
 
 
 async def main():
-    # Replace with your phone number (with country code)
-    phone_number = "+201555250555"
-
     logging.info("Connecting to Telegram...")
 
     try:
-        await client.start(phone_number)
+        await client.start(PHONE_NUMBER)
         logging.info("Connected successfully.")
 
         @client.on(events.NewMessage(chats=MONITORED_CHANNEL))
