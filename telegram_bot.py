@@ -8,6 +8,9 @@ load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(BOT_TOKEN)
 
+# Disable the webhook
+bot.delete_webhook()
+
 @bot.message_handler(func=lambda message: True)
 def handle_start(message):
     bot.send_message(message.chat.id, "مرحباً بك في القناة! هل ترغب في القيام بـ\n1- عملية شراء\n2- إستفسار")
